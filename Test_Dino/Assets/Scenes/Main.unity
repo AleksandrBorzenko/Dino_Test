@@ -1108,6 +1108,7 @@ GameObject:
   - component: {fileID: 1484709061}
   - component: {fileID: 1484709063}
   - component: {fileID: 1484709062}
+  - component: {fileID: 1484709064}
   m_Layer: 0
   m_Name: WaypointSurface
   m_TagString: Untagged
@@ -1181,6 +1182,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484709060}
   m_Mesh: {fileID: 4300000, guid: 5cbb72520f7443f49b700d24eeec82e9, type: 3}
+--- !u!65 &1484709064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484709060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1607309792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1507,6 +1521,7 @@ GameObject:
   - component: {fileID: 1955427230}
   - component: {fileID: 1955427232}
   - component: {fileID: 1955427231}
+  - component: {fileID: 1955427233}
   m_Layer: 0
   m_Name: WaypointSurface
   m_TagString: Untagged
@@ -1580,6 +1595,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955427229}
   m_Mesh: {fileID: 4300000, guid: 5cbb72520f7443f49b700d24eeec82e9, type: 3}
+--- !u!65 &1955427233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955427229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2118803069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2346,6 +2374,7 @@ GameObject:
   - component: {fileID: 4963671575762515}
   - component: {fileID: 33074522928671295}
   - component: {fileID: 23115425869751909}
+  - component: {fileID: 1761572446723078}
   m_Layer: 0
   m_Name: WaypointSurface
   m_TagString: Untagged
@@ -2353,6 +2382,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1761572446723078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761572446723077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1769836999239133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,6 +3778,7 @@ GameObject:
   - component: {fileID: 1322395958019352562}
   - component: {fileID: 1322395958019352560}
   - component: {fileID: 1322395958019352561}
+  - component: {fileID: 1322395958019352564}
   m_Layer: 0
   m_Name: WaypointSurface
   m_TagString: Untagged
@@ -3743,6 +3786,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1322395958019352564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322395958019352563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1322395958940098477
 Transform:
   m_ObjectHideFlags: 0
