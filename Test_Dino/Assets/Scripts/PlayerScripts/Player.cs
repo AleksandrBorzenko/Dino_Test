@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Player's facade
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
 {
     private PlayerAnimator _playerAnimator;
     private List<Waypoint> _currentWaypoints;
+    private PlayerPathSearcher _playerPathSearcher;
+
     /// <summary>
     /// Singleton of a player
     /// </summary>
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
         {
             instance = this;
             _playerAnimator = new PlayerAnimator(GetComponentInChildren<Animator>());
+            _playerPathSearcher = new PlayerPathSearcher(GetComponent<NavMeshAgent>());
         }
     }
 
