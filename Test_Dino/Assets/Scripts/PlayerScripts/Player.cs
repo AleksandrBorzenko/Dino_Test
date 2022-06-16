@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
         StartCoroutine(RotatePlayer());
         canMove = false;
         _nextWaypointNumber++;
-        Debug.Log("Arrived");
     }
 
     private IEnumerator RotatePlayer()
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.Lerp(startRot, _currentWaypoints[currentWaypoint].playerPlace.playerYRotationInWaypoint,
                 _rotationMultiplier*Time.timeSinceLevelLoad- startTime);
-            Debug.Log("Rotating");
             yield return null;
         }
 
