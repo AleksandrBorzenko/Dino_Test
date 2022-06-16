@@ -41,9 +41,6 @@ public class Player : MonoBehaviour
         float startTime = Time.timeSinceLevelLoad;
         while (Quaternion.Angle(_currentWaypoints[currentWaypoint].playerPlace.playerYRotationInWaypoint,transform.rotation) > _rotationOffset)
         {
-            /*transform.rotation = Quaternion.RotateTowards(transform.rotation, new Quaternion(transform.rotation.x,
-                _currentWaypoints[currentWaypoint].playerPlace.playerYRotationInWaypoint, transform.rotation.z,
-                transform.rotation.w), _rotationMultiplier);*/
             transform.rotation = Quaternion.Lerp(startRot, _currentWaypoints[currentWaypoint].playerPlace.playerYRotationInWaypoint,
                 _rotationMultiplier*Time.timeSinceLevelLoad- startTime);
             Debug.Log("Rotating");
@@ -71,7 +68,10 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Receive waypoints list
+    /// </summary>
+    /// <param name="waypoints">List of waypoints on scene</param>
     public void TakeWaypoints(List<Waypoint> waypoints)
     {
         _currentWaypoints = new List<Waypoint>();
