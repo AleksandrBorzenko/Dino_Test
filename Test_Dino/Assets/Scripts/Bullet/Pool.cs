@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Base abstraction for pools which inherit MonoBehaviour
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type of the pool</typeparam>
 public class Pool<T> where T : MonoBehaviour
 {
     private List<T> pool;
@@ -24,24 +24,23 @@ public class Pool<T> where T : MonoBehaviour
     /// Creates a pool of objects
     /// </summary>
     /// <param name="prefab">Object's prefab</param>
-    /// <param name="amount">Amount in pool</param>
+    /// <param name="capacity">Amount in pool</param>
     /// <param name="container">Objects' holder container</param>
 
     #endregion
     
-    ///
-    public Pool(T prefab, int amount, Transform container)
+    public Pool(T prefab, int capacity, Transform container)
     {
         this.prefab = prefab;
         this.objectsContainer = container;
-        CreatePool(amount);
+        CreatePool(capacity);
     }
 
     #region Private Functions
-    private void CreatePool(int amount)
+    private void CreatePool(int capacity)
     {
         pool = new List<T>();
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < capacity; i++)
         {
             CreateObject();
         }
@@ -69,10 +68,12 @@ public class Pool<T> where T : MonoBehaviour
     {
         foreach (var element in pool)
         {
-            if (!element.gameObject.activeInHierarchy) continue;
-            freeElement = element;
-            freeElement.gameObject.SetActive(true);
-            return true;
+            if (!element.gameObject.activeInHierarchy)
+            {
+                freeElement = element;
+                freeElement.gameObject.SetActive(true);
+                return true;
+            }
         }
         freeElement = null;
         return false;
@@ -85,8 +86,8 @@ public class Pool<T> where T : MonoBehaviour
     {
         if (HasFreeObject(out var element))
             return element;
-
-        return CreateObject(true);
+        else
+            return CreateObject(true);
     }
 
     #endregion

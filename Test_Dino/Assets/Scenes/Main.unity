@@ -478,6 +478,7 @@ MonoBehaviour:
   _waypointsHolder: {fileID: 638833638}
   _player: {fileID: 1045400161258326}
   _touchScreen: {fileID: 742870531}
+  _bulletPool: {fileID: 1793948141}
 --- !u!4 &556748109
 Transform:
   m_ObjectHideFlags: 0
@@ -2058,6 +2059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793948140}
+  - component: {fileID: 1793948141}
   m_Layer: 0
   m_Name: BulletPool
   m_TagString: Untagged
@@ -2079,6 +2081,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1793948141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793948139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57584b933c3492b438c1ab6afcccfd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 1769808122251567293, guid: c66a03a15ead2ba4ea5ea911e21b2bec, type: 3}
+  _poolCapacity: 5
 --- !u!1 &1811955428
 GameObject:
   m_ObjectHideFlags: 0
