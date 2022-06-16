@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 /// <summary>
 /// Component of player which searches the path and moves him
@@ -10,28 +11,24 @@ public class PlayerPathSearcher
 {
     private readonly NavMeshAgent _navMeshAgent;
 
-    public bool canMove;
-    public int nextWaypointNumber = 1;
+    /// <summary>
+    /// The event called when the player got the destination
+    /// </summary>
+    public UnityEvent DestinationArrived = new UnityEvent();
 
     /// <summary>
     /// Moves a player to specified position
     /// </summary>
     /// <param name="targetPosition">The position of waypoint</param>
-    public void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition,Vector3 transformPosition)
     {
-       /* if (nextWaypointNumber == 1)
-        {
-            _navMeshAgent.SetDestination(targetPosition);
-            return;
-        }*/
-        if (_navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
+        if (Vector3.Distance(targetPosition,transformPosition) > _navMeshAgent.stoppingDistance)
         {
             _navMeshAgent.SetDestination(targetPosition);
         }
         else
         {
-            canMove = false;
-            nextWaypointNumber++;
+            DestinationArrived?.Invoke();
         }
     }
     /// <summary>

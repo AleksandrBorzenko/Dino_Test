@@ -15,5 +15,5 @@ public class PlayerPlace : MonoBehaviour
     /// <summary>
     /// The end rotation of player in a waypoint
     /// </summary>
-    public float playerYRotationInWaypoint => transform.rotation.y;
+    public Quaternion playerYRotationInWaypoint => transform.rotation;
 }

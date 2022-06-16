@@ -7,7 +7,7 @@ public class WaypointsHolder : MonoBehaviour
     /// <summary>
     /// List of waypoints on scene
     /// </summary>
-    public List<Waypoint> waypoints { get; private set; } = new List<Waypoint>();
+    public List<Waypoint> waypoints { get; } = new List<Waypoint>();
     /// <summary>
     /// Initialize all waypoints on scene
     /// </summary>
