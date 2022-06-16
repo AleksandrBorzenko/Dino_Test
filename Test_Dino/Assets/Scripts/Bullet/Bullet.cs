@@ -11,31 +11,41 @@ public class Bullet : MonoBehaviour
 
     private float _currentLifeTime;
 
+    private Vector3 _pointToMove;
 
     #region Public Methods
     /// <summary>
     /// Sets current lifetime to default
     /// </summary>
-    public void SetCurrentLifeTimeToMax()
+    public void SetDefaultParameters()
     {
+        _pointToMove = Vector3.zero;
         _currentLifeTime = _lifeTime;
     }
     /// <summary>
-    /// Bullet translates to point
+    /// Sets the point where bullet will move
     /// </summary>
     /// <param name="point">Tap input position</param>
-    public void TranslateToPoint(Vector3 point)
+    public void SetPointToMove(Vector3 point)
     {
-        transform.Translate(point);
+        _pointToMove = point;
     }
 
     #endregion
 
-    
+    private void Translate()
+    {
+        if (_pointToMove != Vector3.zero)
+            transform.position = Vector3.MoveTowards(transform.position, _pointToMove, Time.deltaTime*_speed);
+    }
 
     private void Update()
     {
-        if (_currentLifeTime > 0) _currentLifeTime -= Time.deltaTime;
+        if (_currentLifeTime > 0)
+        {
+            Translate();
+            _currentLifeTime -= Time.deltaTime;
+        }
         else gameObject.SetActive(false);
     }
 }

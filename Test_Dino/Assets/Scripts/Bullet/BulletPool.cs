@@ -21,14 +21,15 @@ public class BulletPool : MonoBehaviour
         _bulletPool = new Pool<Bullet>(_bulletPrefab, _poolCapacity, transform);
     }
     /// <summary>
-    /// Create bullet from pool in specified position
+    /// Create bullet from pool in specified startPosition
     /// </summary>
-    /// <param name="position">Specified position</param>
-    public void CreateBullet(Vector3 position)
+    /// <param name="startPosition">Specified startPosition</param>
+    public void CreateBullet(Vector3 startPosition, Vector3 targetPosition)
     {
         var bullet = _bulletPool.GetFreeElement();
-        bullet.transform.position = position;
-        bullet.SetCurrentLifeTimeToMax();
+        bullet.transform.position = startPosition;
+        bullet.SetDefaultParameters();
+        bullet.SetPointToMove(targetPosition);
     }
 
     #endregion

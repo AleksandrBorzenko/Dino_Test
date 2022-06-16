@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TouchScreen _touchScreen;
     [SerializeField] private BulletPool _bulletPool;
+    [SerializeField] private Camera _mainCamera;
+
 
     private void Start()
     {
@@ -29,20 +31,26 @@ public class GameController : MonoBehaviour
 
     private bool IsMouseOverUI()
     {
-        #if UNITY_EDITOR
-            return EventSystem.current.IsPointerOverGameObject();
+#if UNITY_EDITOR
+        return EventSystem.current.IsPointerOverGameObject();
 
-        #elif UNITY_ANDROID
+#elif UNITY_ANDROID
             return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
-        #endif
+#endif
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI()) 
-            _bulletPool.CreateBullet(_player.fingerForBullet.position);
+        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out hit))
+            {
+                Debug.Log("Creating bullet");
+                _bulletPool.CreateBullet(_player.fingerForBullet.position, hit.point);
+            }
+        }
     }
-
 
 
     private void OnDestroy()

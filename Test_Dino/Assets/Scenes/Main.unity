@@ -479,6 +479,7 @@ MonoBehaviour:
   _player: {fileID: 1045400161258326}
   _touchScreen: {fileID: 742870531}
   _bulletPool: {fileID: 1793948141}
+  _mainCamera: {fileID: 963194227}
 --- !u!4 &556748109
 Transform:
   m_ObjectHideFlags: 0
