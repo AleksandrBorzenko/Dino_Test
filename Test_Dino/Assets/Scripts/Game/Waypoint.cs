@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Class which represents each waypoint on scene
+/// </summary>
 public class Waypoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Player's place component in waypoint
+    /// </summary>
+    [HideInInspector] public PlayerPlace playerPlace;
+    /// <summary>
+    /// Initialize a waypoint
+    /// </summary>
+    public void InitializeWaypoint()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerPlace = GetComponentInChildren<PlayerPlace>();
     }
 }
