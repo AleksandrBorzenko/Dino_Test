@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     private void StopAndSetNextDestination()
     {
+        _playerAnimator.IdleAnim();
         StartCoroutine(RotatePlayer());
         _canMove = false;
         _nextWaypointNumber++;
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _canMove = !_canMove;
+            _playerAnimator.RunAnim();
             Debug.Log(_canMove);
         }
         if (_canMove)
