@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 /// <summary>
 /// Main controller of game process
 /// </summary>
@@ -10,7 +12,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private WaypointsHolder _waypointsHolder;
     [SerializeField] private Player _player;
     [SerializeField] private TouchScreen _touchScreen;
-
     [SerializeField] private BulletPool _bulletPool;
 
     private void Start()
@@ -26,14 +27,28 @@ public class GameController : MonoBehaviour
         _player.StartMoving();
     }
 
+    private bool IsMouseOverUI()
+    {
+        #if UNITY_EDITOR
+            return EventSystem.current.IsPointerOverGameObject();
+
+        #elif UNITY_ANDROID
+            return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        #endif
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-            _bulletPool.CreateBullet();
+        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI()) 
+            _bulletPool.CreateBullet(_player.fingerForBullet.position);
     }
+
+
 
     private void OnDestroy()
     {
         _touchScreen.GameStarted.RemoveListener(StartGame);
     }
+
+
 }

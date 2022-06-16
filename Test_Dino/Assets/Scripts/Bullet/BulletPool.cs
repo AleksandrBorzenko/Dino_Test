@@ -16,8 +16,9 @@ public class BulletPool : MonoBehaviour
         _bulletPool = new Pool<Bullet>(_bulletPrefab,_poolCapacity,transform);
     }
 
-    public void CreateBullet()
+    public void CreateBullet(Vector3 position)
     {
         var bullet = _bulletPool.GetFreeElement();
+        bullet.transform.position = position;
     }
 }

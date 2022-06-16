@@ -10,6 +10,11 @@ using UnityEngine.AI;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// Finger's transform for bullet start position
+    /// </summary>
+    public Transform fingerForBullet;
+
     private PlayerAnimator _playerAnimator;
     private List<Waypoint> _currentWaypoints;
     private PlayerPathSearcher _playerPathSearcher;

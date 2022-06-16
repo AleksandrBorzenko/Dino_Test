@@ -2541,6 +2541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1986ddb03550fb4a8769daeafac2154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fingerForBullet: {fileID: 4594185684445041}
 --- !u!195 &1045400161258327
 NavMeshAgent:
   m_ObjectHideFlags: 0
