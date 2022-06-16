@@ -8,10 +8,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private PlayerAnimator _playerAnimator;
+    private List<Waypoint> _currentWaypoints;
     /// <summary>
     /// Singleton of a player
     /// </summary>
     public static Player instance { get; private set; }
+
 
     private void Awake()
     {
@@ -20,6 +22,13 @@ public class Player : MonoBehaviour
             instance = this;
             _playerAnimator = new PlayerAnimator(GetComponentInChildren<Animator>());
         }
+    }
+
+    public void TakeWaypoints(List<Waypoint> waypoints)
+    {
+        _currentWaypoints = new List<Waypoint>();
+        _currentWaypoints.AddRange(waypoints.ToArray());
+        Debug.Log(_currentWaypoints.Count);
     }
 
 }
