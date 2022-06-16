@@ -11,5 +11,9 @@ public class PlayerPlace : MonoBehaviour
     /// The transform parameter of place
     /// where player have to stay in waypoint
     /// </summary>
-    public Transform playerPlaceInWaypoint => transform;
+    public Vector3 playerPlaceInWaypoint => transform.position;
+    /// <summary>
+    /// The end rotation of player in a waypoint
+    /// </summary>
+    public float playerYRotationInWaypoint => transform.rotation.y;
 }

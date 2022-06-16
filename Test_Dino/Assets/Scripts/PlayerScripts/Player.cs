@@ -12,27 +12,34 @@ public class Player : MonoBehaviour
     private List<Waypoint> _currentWaypoints;
     private PlayerPathSearcher _playerPathSearcher;
 
-    /// <summary>
-    /// Singleton of a player
-    /// </summary>
-    public static Player instance { get; private set; }
-
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            _playerAnimator = new PlayerAnimator(GetComponentInChildren<Animator>());
-            _playerPathSearcher = new PlayerPathSearcher(GetComponent<NavMeshAgent>());
-        }
+        _playerAnimator = new PlayerAnimator(GetComponentInChildren<Animator>());
+        _playerPathSearcher = new PlayerPathSearcher(GetComponent<NavMeshAgent>());
     }
 
     public void TakeWaypoints(List<Waypoint> waypoints)
     {
         _currentWaypoints = new List<Waypoint>();
         _currentWaypoints.AddRange(waypoints.ToArray());
-        Debug.Log(_currentWaypoints.Count);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _playerPathSearcher.canMove = !_playerPathSearcher.canMove;
+            _playerPathSearcher.SetDestination(_currentWaypoints[_playerPathSearcher.nextWaypointNumber].playerPlace.playerPlaceInWaypoint);
+            Debug.Log(_playerPathSearcher.canMove);
+        }
+        if (_playerPathSearcher.canMove)
+        {
+            if (_playerPathSearcher.nextWaypointNumber < _currentWaypoints.Count)
+            {
+                _playerPathSearcher.Move(_currentWaypoints[_playerPathSearcher.nextWaypointNumber].playerPlace.playerPlaceInWaypoint);
+            }
+        }
     }
 
 }
