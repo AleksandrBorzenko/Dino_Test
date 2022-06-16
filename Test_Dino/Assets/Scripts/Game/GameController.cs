@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
     private void StartGame()
     {
-        throw new NotImplementedException();
+        _player.StartMoving();
     }
 
     private void OnDestroy()

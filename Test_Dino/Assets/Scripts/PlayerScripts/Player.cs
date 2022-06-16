@@ -56,12 +56,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             canMove = !canMove;
             _playerAnimator.RunAnim();
             Debug.Log(canMove);
-        }
+        }*/
         if (canMove)
         {
             if (_nextWaypointNumber < _currentWaypoints.Count)
@@ -78,6 +78,14 @@ public class Player : MonoBehaviour
     {
         _currentWaypoints = new List<Waypoint>();
         _currentWaypoints.AddRange(waypoints.ToArray());
+    }
+    /// <summary>
+    /// A player starts moving
+    /// </summary>
+    public void StartMoving()
+    {
+        canMove = true;
+        _playerAnimator.RunAnim();
     }
 
 }
