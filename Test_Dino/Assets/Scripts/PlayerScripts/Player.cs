@@ -13,10 +13,14 @@ public class Player : MonoBehaviour
     private PlayerAnimator _playerAnimator;
     private List<Waypoint> _currentWaypoints;
     private PlayerPathSearcher _playerPathSearcher;
-    private bool _canMove;
     private int _nextWaypointNumber = 1;
     private float _rotationOffset = 0.5f;
     private float _rotationMultiplier = 1f;
+
+    /// <summary>
+    /// Can a player move or not
+    /// </summary>
+    public bool canMove { get; private set; }
 
     private void Awake()
     {
@@ -29,7 +33,7 @@ public class Player : MonoBehaviour
     {
         _playerAnimator.IdleAnim();
         StartCoroutine(RotatePlayer());
-        _canMove = false;
+        canMove = false;
         _nextWaypointNumber++;
         Debug.Log("Arrived");
     }
@@ -56,11 +60,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _canMove = !_canMove;
+            canMove = !canMove;
             _playerAnimator.RunAnim();
-            Debug.Log(_canMove);
+            Debug.Log(canMove);
         }
-        if (_canMove)
+        if (canMove)
         {
             if (_nextWaypointNumber < _currentWaypoints.Count)
             {
