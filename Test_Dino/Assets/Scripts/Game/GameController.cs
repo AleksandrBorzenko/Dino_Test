@@ -6,11 +6,12 @@ using UnityEngine;
 /// </summary>
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private WaypointsHolder waypointsHolder;
+    [SerializeField] private WaypointsHolder _waypointsHolder;
+    [SerializeField] private Player _player;
 
     private void Start()
     {
-        waypointsHolder.InitializePointsOnScene();
-        Debug.Log(waypointsHolder.waypoints.Count);
+        _waypointsHolder.InitializePointsOnScene();
+        _player.TakeWaypoints(_waypointsHolder.waypoints);
     }
 }

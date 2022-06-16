@@ -334,7 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260ab89c94bcfb46a2aeff183b597d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointsHolder: {fileID: 638833638}
+  _waypointsHolder: {fileID: 638833638}
+  _player: {fileID: 1045400161258326}
 --- !u!4 &556748109
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +878,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 20
+  far clip plane: 40
   field of view: 60
   orthographic: 0
   orthographic size: 5
