@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
         _waypointsHolder.InitializePointsOnScene();
         _player.TakeWaypoints(_waypointsHolder.waypoints);
         _player.LastWaypoint.AddListener(ReloadScene);
+        _player.WaypointClean.AddListener(StartGame);
 
         _touchScreen.GameStarted.AddListener(StartGame);
         _bulletPool.InitializePool();
@@ -80,6 +81,8 @@ public class GameController : MonoBehaviour
 
     private void OnDestroy()
     {
+        _player.LastWaypoint.RemoveListener(ReloadScene);
+        _player.WaypointClean.RemoveListener(StartGame);
         _touchScreen.GameStarted.RemoveListener(StartGame);
     }
 
