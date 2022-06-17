@@ -101,5 +101,11 @@ public class Player : MonoBehaviour
     {
         _playerAnimator.ShootAnim();
     }
-
+    /// <summary>
+    /// Prohibit shooting
+    /// </summary>
+    public void SetCanShootFalse()
+    {
+        canShoot = false;
+    }
 }

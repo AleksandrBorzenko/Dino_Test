@@ -22,6 +22,20 @@ public class GameController : MonoBehaviour
         _player.TakeWaypoints(_waypointsHolder.waypoints);
         _touchScreen.GameStarted.AddListener(StartGame);
         _bulletPool.InitializePool();
+
+        foreach (var waypoint in _waypointsHolder.waypoints)
+        {
+            waypoint.WaypointCleaned.AddListener(RemoveWaypoint);
+        }
+    }
+
+    private void RemoveWaypoint(Waypoint waypoint)
+    {
+        waypoint.WaypointCleaned.RemoveListener(RemoveWaypoint);
+        _waypointsHolder.waypoints.Remove(waypoint);
+        _player.StartMoving();
+        _player.SetCanShootFalse();
+
     }
 
     private void StartGame()
@@ -58,7 +72,7 @@ public class GameController : MonoBehaviour
 
 
 
-private void OnDestroy()
+    private void OnDestroy()
     {
         _touchScreen.GameStarted.RemoveListener(StartGame);
     }

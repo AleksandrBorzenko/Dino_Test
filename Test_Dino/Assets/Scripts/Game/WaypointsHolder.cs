@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,4 +21,5 @@ public class WaypointsHolder : MonoBehaviour
             waypoints.Add(waypoint);
         }
     }
+
 }
