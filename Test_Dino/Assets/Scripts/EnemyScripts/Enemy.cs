@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public EnemyBody enemyBody { get; private set; }
 
     private PlayerAnimator _playerAnimator;
-    private void Start()
+    private void Awake()
     {
         _playerAnimator = new PlayerAnimator(GetComponent<Animator>());
         _playerAnimator.IdleAnim();

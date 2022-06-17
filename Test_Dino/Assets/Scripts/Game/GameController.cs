@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Main controller of game process
@@ -20,22 +21,27 @@ public class GameController : MonoBehaviour
     {
         _waypointsHolder.InitializePointsOnScene();
         _player.TakeWaypoints(_waypointsHolder.waypoints);
+        _player.LastWaypoint.AddListener(ReloadScene);
+
         _touchScreen.GameStarted.AddListener(StartGame);
         _bulletPool.InitializePool();
 
         foreach (var waypoint in _waypointsHolder.waypoints)
         {
-            waypoint.WaypointCleaned.AddListener(RemoveWaypoint);
+            waypoint.WaypointCleaned.AddListener(StartMovingThePlayer);
         }
     }
 
-    private void RemoveWaypoint(Waypoint waypoint)
+    private void ReloadScene()
     {
-        waypoint.WaypointCleaned.RemoveListener(RemoveWaypoint);
-        _waypointsHolder.waypoints.Remove(waypoint);
-        _player.StartMoving();
-        _player.SetCanShootFalse();
+        _player.LastWaypoint.RemoveListener(ReloadScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
+    private void StartMovingThePlayer(Waypoint waypoint)
+    {
+        waypoint.WaypointCleaned.RemoveListener(StartMovingThePlayer);
+        _player.StartMoving();
     }
 
     private void StartGame()

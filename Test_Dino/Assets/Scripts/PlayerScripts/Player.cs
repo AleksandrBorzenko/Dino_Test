@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 /// <summary>
 /// Player's facade
@@ -26,7 +27,19 @@ public class Player : MonoBehaviour
     /// Can a player move or not
     /// </summary>
     public bool canMove { get; private set; }
+    /// <summary>
+    /// Can the player shoot
+    /// </summary>
     public bool canShoot { get; private set; }
+    /// <summary>
+    /// Calls when the waypoint is empty from enemies
+    /// </summary>
+    public UnityEvent WaypointClean = new UnityEvent();
+    /// <summary>
+    /// Calls if the waypoint is last
+    /// </summary>
+    public UnityEvent LastWaypoint = new UnityEvent();
+
 
     private void Awake()
     {
@@ -42,6 +55,12 @@ public class Player : MonoBehaviour
         StartCoroutine(RotatePlayer());
         canMove = false;
         _nextWaypointNumber++;
+        if (_currentWaypoints[_nextWaypointNumber-1].enemiesHolder.enemies.Count==0 && _nextWaypointNumber!=_currentWaypoints.Count)
+        {
+            WaypointClean?.Invoke();
+        }
+        else if(_nextWaypointNumber == _currentWaypoints.Count)
+            LastWaypoint?.Invoke();
     }
 
     private IEnumerator RotatePlayer()
@@ -92,6 +111,7 @@ public class Player : MonoBehaviour
     public void StartMoving()
     {
         canMove = true;
+        canShoot = false;
         _playerAnimator.RunAnim();
     }
     /// <summary>
@@ -101,11 +121,5 @@ public class Player : MonoBehaviour
     {
         _playerAnimator.ShootAnim();
     }
-    /// <summary>
-    /// Prohibit shooting
-    /// </summary>
-    public void SetCanShootFalse()
-    {
-        canShoot = false;
-    }
+    
 }
