@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 3003591610681986517}
   - component: {fileID: 3003591610681986516}
   - component: {fileID: 2594837141249436056}
+  - component: {fileID: 6193928779765903253}
   m_Layer: 0
   m_Name: WaypointSurface
   m_TagString: Untagged
@@ -139,6 +140,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6193928779765903253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003591610681986518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae3c67655dd0124cac79f7efb6186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5058194581244384271
 GameObject:
   m_ObjectHideFlags: 0

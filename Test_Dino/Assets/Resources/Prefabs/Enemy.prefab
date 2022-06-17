@@ -815,6 +815,7 @@ GameObject:
   - component: {fileID: 1122521437006442696}
   - component: {fileID: 1122521437006442694}
   - component: {fileID: 1122521437006442695}
+  - component: {fileID: 2823402647269234463}
   m_Layer: 6
   m_Name: Character_Male_Face_01
   m_TagString: Untagged
@@ -948,9 +949,21 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 2dc7b382d25903545b405802eb2198ab, type: 3}
+--- !u!114 &2823402647269234463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122521437006442697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae3c67655dd0124cac79f7efb6186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1122521437020091682
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1066989956288536216}
   - component: {fileID: 4932889042645494398}
   - component: {fileID: 1891192095995326877}
+  - component: {fileID: 3383059578831802225}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -112,3 +113,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3383059578831802225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053479395363246010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae3c67655dd0124cac79f7efb6186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

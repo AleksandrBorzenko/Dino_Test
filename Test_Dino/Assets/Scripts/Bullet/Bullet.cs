@@ -8,9 +8,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _lifeTime = 3;
-    [SerializeField] private float _speed = 0.3f;
+    [SerializeField] private float _speed = 20f;
 
     private float _currentLifeTime;
+    private float _stopDistance=0.01f;
 
     private Vector3 _pointToMove;
 
@@ -38,12 +39,19 @@ public class Bullet : MonoBehaviour
 
     private void Translate()
     {
-        if (_pointToMove != Vector3.zero)
+        if (Vector3.Distance(transform.position, _pointToMove) > _stopDistance)
         {
-            var percentage = _currentLifeTime / _lifeTime;
-           // transform.position = Vector3.Lerp(_startPoint, _pointToMove, percentage);
-           transform.position = Vector3.MoveTowards(transform.position, _pointToMove, _speed * percentage);
+            transform.position = Vector3.MoveTowards(transform.position, _pointToMove, _speed * Time.deltaTime);
         }
+        else
+        {
+            transform.position = _pointToMove;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
     }
 
 
