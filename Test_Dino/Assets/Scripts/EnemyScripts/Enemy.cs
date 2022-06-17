@@ -6,12 +6,17 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
-    private PlayerAnimator _playerAnimator;
+    /// <summary>
+    /// Enemy body component
+    /// </summary>
+    public EnemyBody enemyBody { get; private set; }
 
+    private PlayerAnimator _playerAnimator;
     private void Start()
     {
         _playerAnimator = new PlayerAnimator(GetComponent<Animator>());
         _playerAnimator.IdleAnim();
+        enemyBody = GetComponentInChildren<EnemyBody>();
     }
 
 }
