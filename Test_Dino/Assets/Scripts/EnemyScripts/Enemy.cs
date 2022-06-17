@@ -14,11 +14,4 @@ public class Enemy : MonoBehaviour
         _playerAnimator.IdleAnim();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.TryGetComponent(out Bullet bullet)) 
-        {
-            Destroy(gameObject);
-        }
-    }
 }
