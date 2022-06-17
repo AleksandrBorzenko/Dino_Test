@@ -54,6 +54,13 @@ public class PlayerAnimator
         ResetAllTriggers();
         _playerAnimator.SetTrigger(shoot);
     }
+    /// <summary>
+    /// Disable animator component
+    /// </summary>
+    public void DisableAnimator()
+    {
+        _playerAnimator.enabled = false;
+    }
 
     #endregion
 
