@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Bullet's main class
 /// </summary>
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _lifeTime = 3;
-    [SerializeField] private float _speed = 3;
+    [SerializeField] private float _speed = 0.3f;
 
     private float _currentLifeTime;
 
     private Vector3 _pointToMove;
 
     #region Public Methods
+
     /// <summary>
     /// Sets current lifetime to default
     /// </summary>
     public void SetDefaultParameters()
     {
         _pointToMove = Vector3.zero;
-        _currentLifeTime = _lifeTime;
+        _currentLifeTime = 0;
     }
+
     /// <summary>
     /// Sets the point where bullet will move
     /// </summary>
@@ -36,15 +39,20 @@ public class Bullet : MonoBehaviour
     private void Translate()
     {
         if (_pointToMove != Vector3.zero)
-            transform.position = Vector3.MoveTowards(transform.position, _pointToMove, Time.deltaTime*_speed);
+        {
+            var percentage = _currentLifeTime / _lifeTime;
+           // transform.position = Vector3.Lerp(_startPoint, _pointToMove, percentage);
+           transform.position = Vector3.MoveTowards(transform.position, _pointToMove, _speed * percentage);
+        }
     }
+
 
     private void Update()
     {
-        if (_currentLifeTime > 0)
+        if (_currentLifeTime < _lifeTime)
         {
+            _currentLifeTime += Time.deltaTime;
             Translate();
-            _currentLifeTime -= Time.deltaTime;
         }
         else gameObject.SetActive(false);
     }
