@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
         if (Vector3.Distance(transform.position, _pointToMove) > _stopDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, _pointToMove, _speed * Time.deltaTime);
+            transform.LookAt(_pointToMove);
         }
         else
         {
