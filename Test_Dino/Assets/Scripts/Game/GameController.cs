@@ -41,17 +41,24 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
+        if (_player.canShoot)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out hit))
-                _bulletPool.CreateBullet(_player.fingerForBullet.position, hit.point);
+            if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out hit))
+                {
+                    _bulletPool.CreateBullet(_player.fingerForBullet.position, hit.point);
+                    _player.Shoot();
+                }
+            }
         }
     }
+    
 
 
 
-    private void OnDestroy()
+private void OnDestroy()
     {
         _touchScreen.GameStarted.RemoveListener(StartGame);
     }

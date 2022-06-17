@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     /// Can a player move or not
     /// </summary>
     public bool canMove { get; private set; }
+    public bool canShoot { get; private set; }
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
 
     private void StopAndSetNextDestination()
     {
+        canShoot = true;
         _playerAnimator.IdleAnim();
         StartCoroutine(RotatePlayer());
         canMove = false;
@@ -91,6 +93,13 @@ public class Player : MonoBehaviour
     {
         canMove = true;
         _playerAnimator.RunAnim();
+    }
+    /// <summary>
+    /// Play shoot animation
+    /// </summary>
+    public void Shoot()
+    {
+        _playerAnimator.ShootAnim();
     }
 
 }
