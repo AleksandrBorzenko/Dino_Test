@@ -9,7 +9,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Player's facade
 /// </summary>
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IVital
 {
     /// <summary>
     /// Finger's transform for bullet start position
@@ -31,6 +31,18 @@ public class Player : MonoBehaviour
     /// Can the player shoot
     /// </summary>
     public bool canShoot { get; private set; }
+
+    /// <summary>
+    /// Health of player
+    /// </summary>
+    public int health { get; private set; } = 1;
+
+    /// <summary>
+    /// Player's damage
+    /// </summary>
+    public int damage => 1;
+
+
     /// <summary>
     /// Calls when the waypoint is empty from enemies
     /// </summary>
@@ -121,5 +133,11 @@ public class Player : MonoBehaviour
     {
         _playerAnimator.ShootAnim();
     }
-    
+
+    public void TakeDamage(int damage)
+    {
+        if(health>0)
+            health -= damage;
+    }
+
 }

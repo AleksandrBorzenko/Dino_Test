@@ -31,13 +31,13 @@ public class Waypoint : MonoBehaviour
 
         foreach (var enemy in enemiesHolder.enemies)
         {
-            enemy.enemyBody.EnemyDestroyed.AddListener(CheckLeftEnemies);
+            enemy.EnemyDestroyed.AddListener(CheckLeftEnemies);
         }
     }
 
     private void CheckLeftEnemies(Enemy enemy)
     {
-        enemy.enemyBody.EnemyDestroyed.RemoveListener(CheckLeftEnemies);
+        enemy.EnemyDestroyed.RemoveListener(CheckLeftEnemies);
         if(enemiesHolder.RemoveEnemyAndCheckIsLast(enemy))
             WaypointCleaned?.Invoke(this);
     }

@@ -5,17 +5,14 @@ using UnityEngine.Events;
 
 public class EnemyBody : MonoBehaviour
 {
-    /// <summary>
-    /// Event which is called when the player destroys an enemy
-    /// </summary>
-    [HideInInspector] public UnityEvent<Enemy> EnemyDestroyed = new UnityEvent<Enemy>();
+
+    [HideInInspector] public UnityEvent<int> DamageTaken = new UnityEvent<int>();
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.TryGetComponent(out Bullet bullet))
         {
-            EnemyDestroyed?.Invoke(transform.parent.GetComponent<Enemy>());
-            transform.parent.gameObject.SetActive(false);
+            DamageTaken?.Invoke(bullet.damage);
         }
     }
 }

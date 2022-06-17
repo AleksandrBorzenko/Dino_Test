@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out hit))
                 {
-                    _bulletPool.CreateBullet(_player.fingerForBullet.position, hit.point);
+                    _bulletPool.CreateBullet(_player.fingerForBullet.position, hit.point,_player.damage);
                     _player.Shoot();
                 }
             }

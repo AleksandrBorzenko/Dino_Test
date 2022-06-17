@@ -15,15 +15,18 @@ public class Bullet : MonoBehaviour
 
     private Vector3 _pointToMove;
 
+    [HideInInspector] public int damage;
+
     #region Public Methods
 
     /// <summary>
     /// Sets current lifetime to default
     /// </summary>
-    public void SetDefaultParameters()
+    public void SetDefaultParameters(int damage)
     {
         _pointToMove = Vector3.zero;
         _currentLifeTime = 0;
+        this.damage = damage;
     }
 
     /// <summary>

@@ -24,11 +24,11 @@ public class BulletPool : MonoBehaviour
     /// Create bullet from pool in specified startPosition
     /// </summary>
     /// <param name="startPosition">Specified startPosition</param>
-    public void CreateBullet(Vector3 startPosition, Vector3 targetPosition)
+    public void CreateBullet(Vector3 startPosition, Vector3 targetPosition, int damage)
     {
         var bullet = _bulletPool.GetFreeElement();
         bullet.transform.position = startPosition;
-        bullet.SetDefaultParameters();
+        bullet.SetDefaultParameters(damage);
         bullet.SetPointToMove(targetPosition);
     }
 
