@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
     public void SetPointToMove(Vector3 point)
     {
         _pointToMove = point;
+        transform.LookAt(point);
     }
 
     #endregion
