@@ -11,10 +11,15 @@ public class Waypoint : MonoBehaviour
     /// </summary>
     [HideInInspector] public PlayerPlace playerPlace;
     /// <summary>
+    /// Enemies holder component in waypoint
+    /// </summary>
+    [HideInInspector] public EnemiesHolder enemiesHolder { get; private set; }
+    /// <summary>
     /// Initialize a waypoint
     /// </summary>
     public void InitializeWaypoint()
     {
         playerPlace = GetComponentInChildren<PlayerPlace>();
+        enemiesHolder = GetComponentInChildren<EnemiesHolder>();
     }
 }

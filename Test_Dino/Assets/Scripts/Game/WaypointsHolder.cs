@@ -18,7 +18,6 @@ public class WaypointsHolder : MonoBehaviour
             var waypoint = child.GetComponent<Waypoint>();
             waypoint.InitializeWaypoint();
             waypoints.Add(waypoint);
-
         }
     }
 }
